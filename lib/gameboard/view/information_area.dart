@@ -58,9 +58,18 @@ class InformationArea extends StatelessWidget {
               builder: (context, state) {
                 return Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: RaisedButton(
-                    onPressed: () => context.bloc<DoneCubit>().roundDone(),
-                    child: Text('Zug beenden'),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      RaisedButton(
+                        onPressed: () => context.bloc<DoneCubit>().roundDone(),
+                        child: Text('Zug beenden'),
+                      ),
+                      RaisedButton(
+                        onPressed: () => context.bloc<RoundCubit>().finishRound(),
+                        child: Text('Ende Jahreszeit'),
+                      )
+                    ],
                   ),
                 );
               },

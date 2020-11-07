@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
+import 'package:kartograph_digital_note/gameboard/cubit/round_cubit.dart';
 import 'package:kartograph_digital_note/gameboard/view/view.dart';
 
 class GameBoard extends StatelessWidget {
@@ -12,6 +13,8 @@ class GameBoard extends StatelessWidget {
         BlocProvider<ColorCubit>(create:  (_) => ColorCubit()),
         BlocProvider<DoneCubit>(create: (_) => DoneCubit()),
         BlocProvider<CoinCubit>(create: (_) => CoinCubit()),
+        BlocProvider<RoundCubit>(create: (_) => RoundCubit()),
+        BlocProvider<SeasonsCubit>(create: (_) => SeasonsCubit()),
       ],
       child: Scaffold(
         appBar: AppBar(title: Text('Lets play')),
