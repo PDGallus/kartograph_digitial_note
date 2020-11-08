@@ -49,7 +49,9 @@ class _GridFieldState extends State<GridField> {
               }
 
               return InkWell(
-                onTap: immutable || widget.gridFieldModel.isMountain
+                onTap: immutable ||
+                        widget.gridFieldModel.isMountain ||
+                        widget.gridFieldModel.isWastland
                     ? () {}
                     : changeColor,
                 child: Stack(
@@ -71,9 +73,12 @@ class _GridFieldState extends State<GridField> {
                       ],
                     ),
                     widget.gridFieldModel.hasTemple
-                        ? Icon(
-                            Icons.account_balance,
-                            color: Colors.grey[700],
+                        ? Opacity(
+                            opacity: 0.5,
+                            child: Icon(
+                              Icons.account_balance,
+                              color: Colors.grey[700],
+                            ),
                           )
                         : Container(),
                     widget.gridFieldModel.isMountain
@@ -81,6 +86,9 @@ class _GridFieldState extends State<GridField> {
                             Icons.landscape,
                             color: Colors.brown[300],
                           )
+                        : Container(),
+                    widget.gridFieldModel.isWastland
+                        ? Container(color: widget.gridFieldModel.fieldColor)
                         : Container(),
                   ],
                 ),

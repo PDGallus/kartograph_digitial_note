@@ -5,11 +5,15 @@ import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
 import 'package:kartograph_digital_note/gameboard/view/view.dart';
 
 class GameBoardPortrait extends StatelessWidget {
+  final int index;
+
+  GameBoardPortrait(this.index);
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Grid(),
+        Grid(index),
         BlocBuilder<RoundCubit, bool>(
           builder: (context, state) {
             return state ? PointsArea() : InformationArea();
