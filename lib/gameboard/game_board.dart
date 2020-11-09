@@ -6,9 +6,6 @@ import 'package:kartograph_digital_note/gameboard/cubit/round_cubit.dart';
 import 'package:kartograph_digital_note/gameboard/view/view.dart';
 
 class GameBoard extends StatelessWidget {
-  final int index;
-
-  GameBoard(this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +25,8 @@ class GameBoard extends StatelessWidget {
           child: MediaQuery
               .of(context)
               .orientation == Orientation.landscape || kIsWeb
-              ? GameBoardLandscape(index)
-              : GameBoardPortrait(index),
+              ? GameBoardLandscape()
+              : GameBoardPortrait(),
         ),
       ),
     );

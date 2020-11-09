@@ -3,3 +3,4 @@ export 'done_cubit.dart';
 export 'coin_cubit.dart';
 export 'round_cubit.dart';
 export 'seasons_cubit.dart';
+export 'map_cubit.dart';
