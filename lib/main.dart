@@ -5,5 +5,5 @@ import 'package:kartograph_digital_note/gameboard/gameboard_observer.dart';
 
 void main() {
   Bloc.observer = GameboardObserver();
-  runApp(MaterialApp(home: App(),));
+  runApp(App());
 }

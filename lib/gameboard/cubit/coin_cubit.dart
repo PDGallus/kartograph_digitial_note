@@ -9,4 +9,6 @@ class CoinCubit extends Cubit<int> {
     }
   };
 
+  void setCoins(int value) => emit(value);
+
 }
