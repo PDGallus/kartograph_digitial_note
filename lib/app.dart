@@ -6,8 +6,12 @@ import 'package:kartograph_digital_note/gameboard/start_page.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<MapCubit>(
-      create: (_) => MapCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MapCubit>(
+            create: (_) => MapCubit()),
+        BlocProvider<SeasonsCubit>(create: (_) => SeasonsCubit())
+      ],
       child: MaterialApp(
         home: Scaffold(
           body: Center(
