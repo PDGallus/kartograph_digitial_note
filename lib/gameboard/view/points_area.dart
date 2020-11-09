@@ -41,43 +41,52 @@ class PointsArea extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               SeasonPoints(),
-              BlocBuilder<SeasonsCubit, int>(
-                builder: (context, state) {
-                  return state < 3
-                      ? RaisedButton(
-                          onPressed: () {
-                            context.bloc<SeasonsCubit>().nextSeason();
-                            sumUpPoints();
-                            context.bloc<RoundCubit>().startRound();
-                            FocusScope.of(context).unfocus();
-                          },
-                          child: Text(
-                              'Zum ${activeCategories[context.bloc<SeasonsCubit>().state + 1]['text']}'),
-                        )
-                      : RaisedButton(
-                          onPressed: () {
-                            sumUpPoints();
-                            return showDialog(
-                                context: context,
-                                builder: (_) => AlertDialog(
-                                      title: Text('Gesamtpunktzahl'),
-                                      content: Text(
-                                          'Du hast ${context.bloc<SumUpCubit>().state} Punkte erreicht!'),
-                                      actions: [
-                                        FlatButton(
-                                          child: Text('Ok'),
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                            resetAllCubits();
-                                            Navigator.pop(context);
-                                          },
-                                        )
-                                      ],
-                                    ));
-                          },
-                          child: Text('Gesamtpunkte'),
-                        );
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  RaisedButton(
+                    onPressed: () => context.bloc<RoundCubit>().startRound(),
+                    child: Text('Zurück'),
+                  ),
+                  BlocBuilder<SeasonsCubit, int>(
+                    builder: (context, state) {
+                      return state < 3
+                          ? RaisedButton(
+                              onPressed: () {
+                                context.bloc<SeasonsCubit>().nextSeason();
+                                sumUpPoints();
+                                context.bloc<RoundCubit>().startRound();
+                                FocusScope.of(context).unfocus();
+                              },
+                              child: Text(
+                                  'Zum ${activeCategories[context.bloc<SeasonsCubit>().state + 1]['text']}'),
+                            )
+                          : RaisedButton(
+                              onPressed: () {
+                                sumUpPoints();
+                                return showDialog(
+                                    context: context,
+                                    builder: (_) => AlertDialog(
+                                          title: Text('Gesamtpunktzahl'),
+                                          content: Text(
+                                              'Du hast ${context.bloc<SumUpCubit>().state} Punkte erreicht!'),
+                                          actions: [
+                                            FlatButton(
+                                              child: Text('Ok'),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                                resetAllCubits();
+                                                Navigator.pop(context);
+                                              },
+                                            )
+                                          ],
+                                        ));
+                              },
+                              child: Text('Gesamtpunkte'),
+                            );
+                    },
+                  ),
+                ],
               )
             ],
           ),

@@ -11,14 +11,15 @@ class ColorsChoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ColorCubit, Color>(
-      builder: (context, state) {
-        return FlatButton(
-          color: color,
-          onPressed: () => context.bloc<ColorCubit>().changeColor(color),
-          child: Icon(icon, color: iconColor,),
-        );
-      },
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () => context.bloc<ColorCubit>().changeColor(color),
+        child: Icon(
+          icon,
+          color: iconColor,
+        ),
+      ),
     );
   }
 }
