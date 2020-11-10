@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
-import 'package:kartograph_digital_note/gameboard/cubit/round_cubit.dart';
-import 'package:kartograph_digital_note/gameboard/cubit/sum_up_cubit.dart';
 import 'package:kartograph_digital_note/gameboard/model/season_model.dart';
 import 'package:kartograph_digital_note/gameboard/view/view.dart';
 

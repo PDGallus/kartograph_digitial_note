@@ -4,7 +4,6 @@ import 'package:kartograph_digital_note/custom_icons/custom_icons_icons.dart';
 import 'package:kartograph_digital_note/gameboard/components/coins_count.dart';
 import 'package:kartograph_digital_note/gameboard/components/colors_choice.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
-import 'package:kartograph_digital_note/gameboard/cubit/sum_up_cubit.dart';
 
 class InformationArea extends StatelessWidget {
   @override
@@ -59,19 +58,6 @@ class InformationArea extends StatelessWidget {
                 ],
               ),
             ),
-            // Row(
-            //   mainAxisSize: MainAxisSize.max,
-            //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //   children: [
-            //     ColorsChoice(
-            //         icon: Icons.waves_rounded, color: Colors.blue[800]),
-            //     ColorsChoice(
-            //         icon: CustomIcons.fat_round_monster, color: Colors.purple),
-            //     ColorsChoice(
-            //         icon: Icons.delete_forever_outlined,
-            //         color: Colors.transparent),
-            //   ],
-            // ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: RaisedButton(
