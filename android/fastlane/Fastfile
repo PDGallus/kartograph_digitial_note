@@ -27,6 +27,12 @@ platform :android do
     supply(aab:"../build/app/outputs/bundle/release/app-release.aab", track:"alpha")
   end
 
+  desc "Submit a new Beta Build to Google Play"
+  lane :beta do
+    sh "flutter build appbundle"
+    supply(aab:"../build/app/outputs/bundle/release/app-release.aab", track:"beta")
+  end
+
   desc "Deploy a new version to the Google Play"
   lane :deploy do
     gradle(task: "clean assembleRelease")
