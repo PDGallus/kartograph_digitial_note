@@ -19,6 +19,7 @@ class GameBoard extends StatelessWidget {
         BlocProvider<Cat2Cubit>(create: (_) => Cat2Cubit()),
         BlocProvider<MonsterCubit>(create: (_) => MonsterCubit()),
         BlocProvider<SumUpCubit>(create: (_) => SumUpCubit()),
+        BlocProvider<ActiveColorCubit>(create: (_) => ActiveColorCubit()),
       ],
       child: Scaffold(
         appBar: AppBar(

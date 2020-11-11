@@ -13,6 +13,9 @@ class App extends StatelessWidget {
         BlocProvider<SeasonsCubit>(create: (_) => SeasonsCubit())
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
         home: Scaffold(
           body: Center(
             child: StartPage(),

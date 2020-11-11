@@ -8,3 +8,4 @@ export 'monster_cubit.dart';
 export 'round_cubit.dart';
 export 'seasons_cubit.dart';
 export 'sum_up_cubit.dart';
+export 'active_color_cubit.dart';

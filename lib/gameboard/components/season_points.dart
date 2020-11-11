@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
@@ -8,12 +10,13 @@ class SeasonPoints extends StatelessWidget {
   Widget build(BuildContext context) {
     final node = FocusScope.of(context);
 
+    final textStyle = TextStyle(color: Colors.white, fontSize: 16);
+
     return Expanded(
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Row(
-            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
@@ -31,13 +34,11 @@ class SeasonPoints extends StatelessWidget {
           ),
           Expanded(
             child: Row(
-              mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8),
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -49,7 +50,7 @@ class SeasonPoints extends StatelessWidget {
                             onEditingComplete: () => node.nextFocus(),
                             cursorColor: Colors.white,
                             keyboardType: TextInputType.number,
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: textStyle,
                             decoration: InputDecoration(
                               labelText:
                                   'Auftrag  ${activeCategories[context.bloc<SeasonsCubit>().state]['cat1']}',
@@ -68,7 +69,6 @@ class SeasonPoints extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8),
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -80,7 +80,7 @@ class SeasonPoints extends StatelessWidget {
                             onEditingComplete: () => node.nextFocus(),
                             cursorColor: Colors.white,
                             keyboardType: TextInputType.number,
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: textStyle,
                             decoration: InputDecoration(
                               labelText:
                                   'Auftrag  ${activeCategories[context.bloc<SeasonsCubit>().state]['cat2']}',
@@ -105,7 +105,6 @@ class SeasonPoints extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8),
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -118,7 +117,7 @@ class SeasonPoints extends StatelessWidget {
                             onEditingComplete: () => node.nextFocus(),
                             cursorColor: Colors.white,
                             keyboardType: TextInputType.number,
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: textStyle,
                             decoration: InputDecoration(
                               labelText: 'Münzen',
                               labelStyle: TextStyle(color: Colors.white),
@@ -136,7 +135,6 @@ class SeasonPoints extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 8),
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -148,7 +146,7 @@ class SeasonPoints extends StatelessWidget {
                             onEditingComplete: () => node.nextFocus(),
                             cursorColor: Colors.white,
                             keyboardType: TextInputType.number,
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: textStyle,
                             decoration: InputDecoration(
                               labelText: 'Monster',
                               labelStyle: TextStyle(color: Colors.white),
