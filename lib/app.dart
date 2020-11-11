@@ -13,6 +13,7 @@ class App extends StatelessWidget {
         BlocProvider<SeasonsCubit>(create: (_) => SeasonsCubit())
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
