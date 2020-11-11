@@ -182,7 +182,7 @@ List<Map<String, List<GridFieldModel>>> gameBoard = [
     "7": new List.generate(11, (index) => GridFieldModel()),
     "8": [
       GridFieldModel(),
-      GridFieldModel(isMountain: true),
+      GridFieldModel(isMountain: true, fieldColor: Colors.brown),
       GridFieldModel(),
       GridFieldModel(),
       GridFieldModel(),
@@ -202,7 +202,7 @@ List<Map<String, List<GridFieldModel>>> gameBoard = [
       GridFieldModel(),
       GridFieldModel(),
       GridFieldModel(),
-      GridFieldModel(isMountain: true),
+      GridFieldModel(isMountain: true, fieldColor: Colors.brown),
       GridFieldModel(),
       GridFieldModel(),
     ],
