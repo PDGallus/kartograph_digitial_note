@@ -3,7 +3,7 @@ description: Digitale Version des Spielblocks
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 0.6.1+15
+version: 0.7.0+16
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
