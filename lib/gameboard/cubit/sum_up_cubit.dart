@@ -1,9 +1,13 @@
 import 'package:bloc/bloc.dart';
+import 'package:kartograph_digital_note/gameboard/model/summary_model.dart';
 
-class SumUpCubit extends Cubit<int> {
-  SumUpCubit(): super(0);
+class SumUpCubit extends Cubit<List<SummaryModel>> {
+  SumUpCubit(): super(new List<SummaryModel>());
 
-  void sumUp(int value) => emit(state + value);
+  void sumUp(SummaryModel summaryModel) {
+    state.add(summaryModel);
+    emit(state);
+  }
 
-  void resetState() => emit(0);
+  void resetState() => emit(new List<SummaryModel>());
 }

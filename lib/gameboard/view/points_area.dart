@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartograph_digital_note/gameboard/components/components.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
 import 'package:kartograph_digital_note/gameboard/model/season_model.dart';
+import 'package:kartograph_digital_note/gameboard/model/sum_up_util.dart';
+import 'package:kartograph_digital_note/gameboard/model/summary_model.dart';
+import 'package:kartograph_digital_note/gameboard/view/view.dart';
 
 class PointsArea extends StatelessWidget {
   @override
@@ -16,7 +19,13 @@ class PointsArea extends StatelessWidget {
         monster.setValue(monster.state * -1);
       }
       int sum = cat1.state + cat2.state + coins.state - monster.state;
-      context.bloc<SumUpCubit>().sumUp(sum);
+
+      context.bloc<SumUpCubit>().sumUp(new SummaryModel(
+          cat1: cat1.state,
+          cat2: cat2.state,
+          coins: coins.state,
+          monster: monster.state,
+          total: sum));
       cat1.resetState();
       cat2.resetState();
       monster.resetState();
@@ -68,9 +77,22 @@ class PointsArea extends StatelessWidget {
                                     builder: (_) => AlertDialog(
                                           title: Text('Gesamtpunktzahl'),
                                           content: Text(
-                                              'Du hast ${context.bloc<SumUpCubit>().state} Punkte erreicht!'),
+                                              'Du hast ${sumUpTotalPoints(context.bloc<SumUpCubit>().state)} Punkte erreicht!'),
                                           actions: [
                                             FlatButton(
+                                              child: Text('Details'),
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        SumUpPage(),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                            RaisedButton(
                                               child: Text('Ok'),
                                               onPressed: () {
                                                 Navigator.of(context).pop();
