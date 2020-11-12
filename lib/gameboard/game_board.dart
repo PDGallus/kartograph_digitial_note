@@ -6,7 +6,6 @@ import 'package:kartograph_digital_note/gameboard/model/season_model.dart';
 import 'package:kartograph_digital_note/gameboard/view/view.dart';
 
 class GameBoard extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -27,21 +26,25 @@ class GameBoard extends StatelessWidget {
             builder: (context, state) => Row(
               children: [
                 Text(activeCategories[state]['text']),
-                SizedBox(width: 8,),
+                SizedBox(width: 8),
                 Icon(activeCategories[state]['icon']),
               ],
             ),
           ),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height - 80, // 32 + appBarHeight
-            padding: EdgeInsets.all(16.0),
-            color: Colors.grey[350],
-            child: MediaQuery.of(context).orientation == Orientation.landscape ||
-                    kIsWeb
-                ? GameBoardLandscape()
-                : GameBoardPortrait(),
+        body: Builder(
+          builder: (context) => SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height -
+                  Scaffold.of(context).appBarMaxHeight,
+              padding: EdgeInsets.all(16.0),
+              color: Colors.grey[350],
+              child:
+                  MediaQuery.of(context).orientation == Orientation.landscape ||
+                          kIsWeb
+                      ? GameBoardLandscape()
+                      : GameBoardPortrait(),
+            ),
           ),
         ),
       ),
