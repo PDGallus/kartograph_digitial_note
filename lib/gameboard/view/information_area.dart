@@ -4,6 +4,8 @@ import 'package:kartograph_digital_note/custom_icons/custom_icons_icons.dart';
 import 'package:kartograph_digital_note/gameboard/components/coins_count.dart';
 import 'package:kartograph_digital_note/gameboard/components/colors_choice.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
+import 'package:kartograph_digital_note/gameboard/model/sum_up_util.dart';
+import 'package:kartograph_digital_note/gameboard/model/summary_model.dart';
 
 class InformationArea extends StatelessWidget {
   @override
@@ -15,29 +17,6 @@ class InformationArea extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // BlocBuilder<ColorCubit, Color>(
-            //   builder: (context, state) => Padding(
-            //     padding: const EdgeInsets.only(top: 8.0),
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       crossAxisAlignment: CrossAxisAlignment.center,
-            //       children: [
-            //         Text(
-            //           'Aktiv:',
-            //           style: TextStyle(color: Colors.white),
-            //         ),
-            //         SizedBox(
-            //           width: 8.0,
-            //         ),
-            //         Container(
-            //           width: 25,
-            //           height: 25,
-            //           color: state,
-            //         )
-            //       ],
-            //     ),
-            //   ),
-            // ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(
@@ -96,9 +75,9 @@ class InformationArea extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  BlocBuilder<SumUpCubit, int>(
+                  BlocBuilder<SumUpCubit, List<SummaryModel>>(
                     builder: (context, state) => Text(
-                      'Punkte: ${context.bloc<SumUpCubit>().state}',
+                      'Punkte: ${sumUpTotalPoints(state)}',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

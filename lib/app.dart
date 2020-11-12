@@ -10,7 +10,8 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<MapCubit>(
             create: (_) => MapCubit()),
-        BlocProvider<SeasonsCubit>(create: (_) => SeasonsCubit())
+        BlocProvider<SeasonsCubit>(create: (_) => SeasonsCubit()),
+        BlocProvider<SumUpCubit>(create: (_) => SumUpCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -18,6 +19,7 @@ class App extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Scaffold(
+          backgroundColor: Colors.brown[300],
           body: Center(
             child: StartPage(),
           ),

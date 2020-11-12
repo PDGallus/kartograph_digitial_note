@@ -12,24 +12,17 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String version;
-    PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
-      version = '${packageInfo.version}+${packageInfo.buildNumber}';
-    });
-
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(height: 50),
-              Image.asset('assets/navigation.png', width: 150,),
-            ],
-          ),
+          Positioned(
+              top: 50,
+              child: Image.asset(
+                'assets/navigation.png',
+                width: 150,
+              )),
           Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +30,7 @@ class StartPage extends StatelessWidget {
             children: [
               Text(
                 'Kartograph: Digitaler Spielplan',
-                style: Theme.of(context).textTheme.headline5,
+                style: TextStyle(fontSize: 24, color: Colors.white),
               ),
               SizedBox(height: 25.0),
               RaisedButton(
@@ -65,8 +58,14 @@ class StartPage extends StatelessWidget {
             children: [
               FutureBuilder(
                 future: _getPackage(),
-                builder: (context, snapshot) =>
-                    snapshot.hasData ? Text(snapshot.data) : Text(''),
+                builder: (context, snapshot) => snapshot.hasData
+                    ? Text(
+                        snapshot.data,
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )
+                    : Text(''),
               ),
             ],
           )
