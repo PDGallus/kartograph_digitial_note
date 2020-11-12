@@ -24,5 +24,6 @@ class CustomIcons {
   static const IconData fat_round_monster = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData coin = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData flower = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData shield_with_banner = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData leaf_fall = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

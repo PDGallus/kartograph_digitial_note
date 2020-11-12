@@ -17,11 +17,12 @@ class GameBoard extends StatelessWidget {
         BlocProvider<Cat1Cubit>(create: (_) => Cat1Cubit()),
         BlocProvider<Cat2Cubit>(create: (_) => Cat2Cubit()),
         BlocProvider<MonsterCubit>(create: (_) => MonsterCubit()),
-        BlocProvider<SumUpCubit>(create: (_) => SumUpCubit()),
         BlocProvider<ActiveColorCubit>(create: (_) => ActiveColorCubit()),
       ],
       child: Scaffold(
+        backgroundColor: Colors.brown,
         appBar: AppBar(
+          backgroundColor: Colors.brown[300],
           title: BlocBuilder<SeasonsCubit, int>(
             builder: (context, state) => Row(
               children: [
@@ -38,12 +39,14 @@ class GameBoard extends StatelessWidget {
               height: MediaQuery.of(context).size.height -
                   Scaffold.of(context).appBarMaxHeight,
               padding: EdgeInsets.all(16.0),
-              color: Colors.grey[350],
-              child:
-                  MediaQuery.of(context).orientation == Orientation.landscape ||
-                          kIsWeb
-                      ? GameBoardLandscape()
-                      : GameBoardPortrait(),
+              child: Container(
+                color: Colors.grey[350],
+                child: MediaQuery.of(context).orientation == Orientation.landscape ||
+                    kIsWeb
+                    ? GameBoardLandscape()
+                    : GameBoardPortrait(),
+              )
+
             ),
           ),
         ),

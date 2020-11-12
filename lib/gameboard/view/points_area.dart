@@ -83,7 +83,7 @@ class PointsArea extends StatelessWidget {
                                               child: Text('Details'),
                                               onPressed: () {
                                                 Navigator.of(context).pop();
-                                                Navigator.push(
+                                                Navigator.pushReplacement(
                                                   context,
                                                   MaterialPageRoute(
                                                     builder: (context) =>
