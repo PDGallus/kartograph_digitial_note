@@ -8,6 +8,31 @@ import 'package:kartograph_digital_note/gameboard/view/view.dart';
 class GameBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Future<bool> _onBackPressed() {
+      return showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text('Spiel beenden?'),
+              content: Text('Soll das Spiel beendet werden?'),
+              actions: <Widget>[
+                FlatButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: Text(
+                    "Ja",
+                    style: TextStyle(color: Colors.red),
+                  ),
+                ),
+                SizedBox(height: 16),
+                FlatButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: Text("Nein"),
+                ),
+              ],
+            ),
+          ) ??
+          false;
+    }
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<ColorCubit>(create: (_) => ColorCubit()),
@@ -24,28 +49,33 @@ class GameBoard extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.brown[300],
           title: BlocBuilder<SeasonsCubit, int>(
-            builder: (context, state) => Row(
-              children: [
-                Text(activeCategories[state]['text']),
-                SizedBox(width: 8),
-                Icon(activeCategories[state]['icon']),
-              ],
-            ),
+            builder: (context, state) =>
+                Row(
+                  children: [
+                    Text(activeCategories[state]['text']),
+                    SizedBox(width: 8),
+                    Icon(activeCategories[state]['icon']),
+                  ],
+                ),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: _onBackPressed,
           ),
         ),
         body: Builder(
           builder: (context) => SingleChildScrollView(
             child: Container(
-              height: MediaQuery.of(context).size.height -
-                  Scaffold.of(context).appBarMaxHeight,
-              padding: EdgeInsets.all(16.0),
-              child: Container(
-                color: Colors.grey[350],
-                child: MediaQuery.of(context).orientation == Orientation.landscape ||
-                    kIsWeb
-                    ? GameBoardLandscape()
-                    : GameBoardPortrait(),
-              )
+                height: MediaQuery.of(context).size.height -
+                    Scaffold.of(context).appBarMaxHeight,
+                padding: EdgeInsets.all(16.0),
+                child: Container(
+                  color: Colors.grey[350],
+                  child: MediaQuery.of(context).orientation == Orientation.landscape ||
+                      kIsWeb
+                      ? GameBoardLandscape()
+                      : GameBoardPortrait(),
+                )
 
             ),
           ),

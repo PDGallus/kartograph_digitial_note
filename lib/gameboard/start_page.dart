@@ -14,8 +14,8 @@ class StartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     navigateToGameboard(int mapIndex) {
       context.bloc<MapCubit>().setMap(mapIndex);
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => GameBoard()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => GameBoard()));
     }
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
