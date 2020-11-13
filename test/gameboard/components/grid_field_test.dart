@@ -60,9 +60,9 @@ void main() {
                     child: Scaffold(
                       body: Row(
                         children: [
-                          GridField(GridFieldModel(
-                              isMountain: true, fieldColor: Colors.brown)),
-                        ],
+                      GridField(GridFieldModel(
+                          immutable: true, fieldColor: Colors.brown)),
+                    ],
                       ),
                     ),
                   ),
@@ -112,7 +112,7 @@ void main() {
                   body: Row(
                     children: [
                       GridField(GridFieldModel(
-                          isMountain: true, fieldColor: Colors.brown)),
+                          immutable: true, fieldColor: Colors.brown)),
                     ],
                   ),
                 ),
@@ -162,7 +162,7 @@ void main() {
                 body: Row(
                   children: [
                     GridField(GridFieldModel(
-                        isWasteland: true, fieldColor: Colors.grey[700])),
+                        immutable: true, fieldColor: Colors.grey[700])),
                   ],
                 ),
               ),
