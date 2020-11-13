@@ -63,10 +63,6 @@ class InformationArea extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CoinsCount(),
-                  RaisedButton(
-                    onPressed: () => context.bloc<DoneCubit>().roundDone(),
-                    child: Text('Zug beenden'),
-                  ),
                 ],
               ),
             ),
