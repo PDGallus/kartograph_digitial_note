@@ -64,6 +64,7 @@ class PointsArea extends StatelessWidget {
                                 context.bloc<SeasonsCubit>().nextSeason();
                                 sumUpPoints();
                                 context.bloc<RoundCubit>().startRound();
+                                context.bloc<DoneCubit>().roundDone();
                                 FocusScope.of(context).unfocus();
                               },
                               child: Text(
