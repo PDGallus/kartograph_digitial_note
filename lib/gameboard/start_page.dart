@@ -46,6 +46,10 @@ class StartPage extends StatelessWidget {
                 child: Text('Die Ödnis'),
                 onPressed: () => navigateToGameboard(1),
               ),
+              RaisedButton(
+                child: Text('Drittes Level'),
+                onPressed: () => navigateToGameboard(2),
+              ),
             ],
           ),
           Column(
