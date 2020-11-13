@@ -12,6 +12,11 @@ class StartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    navigateToGameboard(int mapIndex) {
+      context.bloc<MapCubit>().setMap(mapIndex);
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => GameBoard()));
+    }
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Stack(
@@ -35,19 +40,11 @@ class StartPage extends StatelessWidget {
               SizedBox(height: 25.0),
               RaisedButton(
                 child: Text('Weites Land'),
-                onPressed: () {
-                  context.bloc<MapCubit>().setMap(0);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => GameBoard()));
-                },
+                onPressed: () => navigateToGameboard(0),
               ),
               RaisedButton(
                 child: Text('Die Ödnis'),
-                onPressed: () {
-                  context.bloc<MapCubit>().setMap(1);
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => GameBoard()));
-                },
+                onPressed: () => navigateToGameboard(1),
               ),
             ],
           ),
