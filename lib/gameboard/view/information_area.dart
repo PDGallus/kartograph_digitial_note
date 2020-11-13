@@ -4,6 +4,7 @@ import 'package:kartograph_digital_note/custom_icons/custom_icons_icons.dart';
 import 'package:kartograph_digital_note/gameboard/components/coins_count.dart';
 import 'package:kartograph_digital_note/gameboard/components/colors_choice.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
+import 'package:kartograph_digital_note/gameboard/model/season_model.dart';
 import 'package:kartograph_digital_note/gameboard/model/sum_up_util.dart';
 import 'package:kartograph_digital_note/gameboard/model/summary_model.dart';
 
@@ -79,7 +80,8 @@ class InformationArea extends StatelessWidget {
                   ),
                   RaisedButton(
                     onPressed: () => context.bloc<RoundCubit>().finishRound(),
-                    child: Text('Ende Jahreszeit'),
+                    child: Text(
+                        'Ende ${activeCategories[context.bloc<SeasonsCubit>().state]['text']}'),
                   ),
                 ],
               ),
