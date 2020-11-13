@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kartograph_digital_note/app.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
 import 'package:kartograph_digital_note/gameboard/model/season_model.dart';
 import 'package:kartograph_digital_note/gameboard/view/view.dart';
@@ -16,7 +17,11 @@ class GameBoard extends StatelessWidget {
               content: Text('Soll das Spiel beendet werden?'),
               actions: <Widget>[
                 FlatButton(
-                  onPressed: () => Navigator.of(context).pop(true),
+                  onPressed: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => App()),
+                    (Route<dynamic> route) => false,
+                  ),
                   child: Text(
                     "Ja",
                     style: TextStyle(color: Colors.red),
@@ -66,18 +71,24 @@ class GameBoard extends StatelessWidget {
         body: Builder(
           builder: (context) => SingleChildScrollView(
             child: Container(
-                height: MediaQuery.of(context).size.height -
-                    Scaffold.of(context).appBarMaxHeight,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height -
+                    Scaffold
+                        .of(context)
+                        .appBarMaxHeight,
                 padding: EdgeInsets.all(16.0),
                 child: Container(
                   color: Colors.grey[350],
-                  child: MediaQuery.of(context).orientation == Orientation.landscape ||
+                  child: MediaQuery
+                      .of(context)
+                      .orientation ==
+                      Orientation.landscape ||
                       kIsWeb
                       ? GameBoardLandscape()
                       : GameBoardPortrait(),
-                )
-
-            ),
+                )),
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kartograph_digital_note/app.dart';
 import 'package:kartograph_digital_note/gameboard/components/sum_up_row.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
 import 'package:kartograph_digital_note/gameboard/model/sum_up_util.dart';
@@ -16,7 +17,11 @@ class SumUpPage extends StatelessWidget {
           onPressed: () {
             context.bloc<SumUpCubit>().resetState();
             context.bloc<SeasonsCubit>().resetState();
-            Navigator.pop(context);
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => App()),
+              (Route<dynamic> route) => false,
+            );
           },
         ),
       ),

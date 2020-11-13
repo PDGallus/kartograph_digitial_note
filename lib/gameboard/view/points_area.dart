@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartograph_digital_note/gameboard/components/components.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
 import 'package:kartograph_digital_note/gameboard/model/season_model.dart';
-import 'package:kartograph_digital_note/gameboard/model/sum_up_util.dart';
 import 'package:kartograph_digital_note/gameboard/model/summary_model.dart';
 import 'package:kartograph_digital_note/gameboard/view/view.dart';
 
@@ -73,36 +72,12 @@ class PointsArea extends StatelessWidget {
                           : RaisedButton(
                               onPressed: () {
                                 sumUpPoints();
-                                return showDialog(
-                                    context: context,
-                                    builder: (_) => AlertDialog(
-                                          title: Text('Gesamtpunktzahl'),
-                                          content: Text(
-                                              'Du hast ${sumUpTotalPoints(context.bloc<SumUpCubit>().state)} Punkte erreicht!'),
-                                          actions: [
-                                            FlatButton(
-                                              child: Text('Details'),
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                                Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        SumUpPage(),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                            RaisedButton(
-                                              child: Text('Ok'),
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                                resetAllCubits();
-                                                Navigator.pop(context);
-                                              },
-                                            )
-                                          ],
-                                        ));
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SumUpPage(),
+                                  ),
+                                );
                               },
                               child: Text('Gesamtpunkte'),
                             );
