@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
 import 'package:kartograph_digital_note/gameboard/model/season_model.dart';
@@ -45,11 +46,17 @@ class SeasonPoints extends StatelessWidget {
                         Theme(
                           data: ThemeData(primaryColor: Colors.white),
                           child: TextField(
-                            onChanged: (text) => context.bloc<Cat1Cubit>().setValue(int.parse(text)),
+                            onChanged: (text) => context
+                                .bloc<Cat1Cubit>()
+                                .setValue(int.parse(text)),
                             textInputAction: TextInputAction.next,
                             onEditingComplete: () => node.nextFocus(),
                             cursorColor: Colors.white,
                             keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9]')),
+                            ],
                             style: textStyle,
                             decoration: InputDecoration(
                               labelText:
@@ -75,15 +82,24 @@ class SeasonPoints extends StatelessWidget {
                         Theme(
                           data: ThemeData(primaryColor: Colors.white),
                           child: TextField(
-                            onChanged: (text) => context.bloc<Cat2Cubit>().setValue(int.parse(text)),
+                            onChanged: (text) =>
+                                context
+                                    .bloc<Cat2Cubit>()
+                                    .setValue(int.parse(text)),
                             textInputAction: TextInputAction.next,
                             onEditingComplete: () => node.nextFocus(),
                             cursorColor: Colors.white,
                             keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9]')),
+                            ],
                             style: textStyle,
                             decoration: InputDecoration(
                               labelText:
-                                  'Auftrag  ${activeCategories[context.bloc<SeasonsCubit>().state]['cat2']}',
+                              'Auftrag  ${activeCategories[context
+                                  .bloc<SeasonsCubit>()
+                                  .state]['cat2']}',
                               labelStyle: TextStyle(color: Colors.white),
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white),
@@ -111,12 +127,23 @@ class SeasonPoints extends StatelessWidget {
                         Theme(
                           data: ThemeData(primaryColor: Colors.white),
                           child: TextFormField(
-                            initialValue: '${context.bloc<CoinCubit>().state}',
-                            onChanged: (text) => text.isEmpty ? {} : context.bloc<CoinCubit>().setCoins(int.parse(text)),
+                            initialValue: '${context
+                                .bloc<CoinCubit>()
+                                .state}',
+                            onChanged: (text) =>
+                            text.isEmpty
+                                ? {}
+                                : context
+                                .bloc<CoinCubit>()
+                                .setCoins(int.parse(text)),
                             textInputAction: TextInputAction.next,
                             onEditingComplete: () => node.nextFocus(),
                             cursorColor: Colors.white,
                             keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9]')),
+                            ],
                             style: textStyle,
                             decoration: InputDecoration(
                               labelText: 'Münzen',
@@ -141,11 +168,18 @@ class SeasonPoints extends StatelessWidget {
                         Theme(
                           data: ThemeData(primaryColor: Colors.white),
                           child: TextField(
-                            onChanged: (text) => context.bloc<MonsterCubit>().setValue(int.parse(text)),
+                            onChanged: (text) =>
+                                context
+                                    .bloc<MonsterCubit>()
+                                    .setValue(int.parse(text)),
                             textInputAction: TextInputAction.done,
                             onEditingComplete: () => node.nextFocus(),
                             cursorColor: Colors.white,
                             keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.allow(
+                                  RegExp(r'[0-9]')),
+                            ],
                             style: textStyle,
                             decoration: InputDecoration(
                               labelText: 'Monster',
