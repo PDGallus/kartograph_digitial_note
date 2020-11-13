@@ -19,8 +19,7 @@ class GridFieldState extends State<GridField> {
   @override
   void initState() {
     color = widget.gridFieldModel.fieldColor;
-    immutable =
-        widget.gridFieldModel.isMountain || widget.gridFieldModel.isWasteland;
+    immutable = widget.gridFieldModel.immutable;
     super.initState();
   }
 
@@ -35,8 +34,6 @@ class GridFieldState extends State<GridField> {
               immutable = true;
             });
           }
-          print(
-              'done triggered color != transparent ${color != Colors.transparent} immutable is now $immutable');
           return true;
         },
         builder: (context, doneState) {
@@ -63,21 +60,17 @@ class GridFieldState extends State<GridField> {
                     ),
                   ],
                 ),
-                widget.gridFieldModel.hasTemple
-                    ? Opacity(
-                        opacity: 0.5,
-                        child: Icon(
-                          Icons.account_balance,
-                          color: Colors.grey[700],
-                        ),
-                      )
-                    : Container(),
-                widget.gridFieldModel.isMountain
-                    ? Icon(
-                        Icons.landscape,
-                        color: Colors.brown[300],
-                      )
-                    : Container(),
+                Opacity(
+                  opacity: widget.gridFieldModel.icon == Icons.account_balance
+                      ? 0.5
+                      : 1,
+                  child: Icon(
+                    widget.gridFieldModel.icon,
+                    color: widget.gridFieldModel.icon == Icons.account_balance
+                        ? Colors.grey[700]
+                        : Colors.brown[300],
+                  ),
+                ),
               ],
             ),
           );
