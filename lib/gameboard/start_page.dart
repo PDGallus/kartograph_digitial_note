@@ -5,9 +5,8 @@ import 'package:kartograph_digital_note/gameboard/game_board.dart';
 import 'package:package_info/package_info.dart';
 
 class StartPage extends StatelessWidget {
-  Future<String> _getPackage() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    return '${packageInfo.version}+${packageInfo.buildNumber}';
+  Future<PackageInfo> _getPackage() async {
+    return await PackageInfo.fromPlatform();
   }
 
   @override
@@ -17,6 +16,7 @@ class StartPage extends StatelessWidget {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => GameBoard()));
     }
+
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Stack(
@@ -57,19 +57,29 @@ class StartPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              FutureBuilder(
-                future: _getPackage(),
-                builder: (context, snapshot) => snapshot.hasData
-                    ? Text(
-                        snapshot.data,
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      )
-                    : Text(''),
+              IconButton(
+                icon: Icon(
+                  Icons.info_outline_rounded,
+                  color: Colors.white,
+                ),
+                onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) => FutureBuilder(
+                    future: _getPackage(),
+                    builder: (context, AsyncSnapshot<PackageInfo> snapshot) =>
+                        AboutDialog(
+                      applicationName: snapshot.data.appName,
+                      applicationVersion: '${snapshot.data.version}',
+                      applicationIcon: Image.asset(
+                        'assets/navigation.png',
+                        width: 50,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
