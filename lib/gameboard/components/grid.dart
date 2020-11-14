@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartograph_digital_note/gameboard/components/components.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
 import 'package:kartograph_digital_note/gameboard/model/game_board_model.dart';
+import 'package:kartograph_digital_note/gameboard/model/random_game_board_model.dart';
 
 class Grid extends StatelessWidget {
+  final randomGameBoard = new RandomGameBoardModel();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,16 @@ class Grid extends StatelessWidget {
         child: Row(
           children: new List.generate(
             11,
-            (index) => GridColumn(gameBoard[context.bloc<MapCubit>().state]["$index"]),
+                (index) {
+              if (context
+                  .bloc<MapCubit>()
+                  .state == 3 && randomGameBoard.randomGameBoard.length == 0) {
+                randomGameBoard.createRandomMap();
+              }
+              return GridColumn(gameBoard[context
+                  .bloc<MapCubit>()
+                  .state][index]);
+            },
           ),
         ),
       ),

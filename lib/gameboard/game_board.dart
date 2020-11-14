@@ -17,11 +17,13 @@ class GameBoard extends StatelessWidget {
               content: Text('Soll das Spiel beendet werden?'),
               actions: <Widget>[
                 FlatButton(
-                  onPressed: () => Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => App()),
-                    (Route<dynamic> route) => false,
-                  ),
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => App()),
+                      (Route<dynamic> route) => false,
+                    );
+                  },
                   child: Text(
                     "Ja",
                     style: TextStyle(color: Colors.red),

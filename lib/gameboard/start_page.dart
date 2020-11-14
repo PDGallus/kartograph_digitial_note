@@ -50,6 +50,10 @@ class StartPage extends StatelessWidget {
                 child: Text('Drittes Level'),
                 onPressed: () => navigateToGameboard(2),
               ),
+              RaisedButton(
+                child: Text('Zufallslevel'),
+                onPressed: () => navigateToGameboard(3),
+              ),
             ],
           ),
           Column(
