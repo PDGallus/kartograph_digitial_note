@@ -17,9 +17,7 @@ class Grid extends StatelessWidget {
           children: new List.generate(
             11,
                 (index) {
-              if (context
-                  .bloc<MapCubit>()
-                  .state == 3 && randomGameBoard.randomGameBoard.length == 0) {
+              if (context.bloc<MapCubit>().state == 3 && gameBoard.length < 4) {
                 randomGameBoard.createRandomMap();
               }
               return GridColumn(gameBoard[context

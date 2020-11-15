@@ -6,10 +6,9 @@ import 'package:kartograph_digital_note/gameboard/model/grid_field_model.dart';
 
 class RandomGameBoardModel {
   final _random = new Random();
-  int templesAmount = 6;
-  int mountainsAmount = 5;
-  int wastelandsAmount = 7;
-  List<List<GridFieldModel>> randomGameBoard = [];
+  final int templesAmount = 6;
+  final int mountainsAmount = 5;
+  final int wastelandsAmount = 7;
 
   RandomGameBoardModel();
 
@@ -32,7 +31,6 @@ class RandomGameBoardModel {
   }
 
   void createRandomMap() {
-    gameBoard = gameBoard.sublist(0, 3);
     List<GridFieldModel> currentMap = getBlankMap();
     currentMap = manipulateMap(templesAmount, temple, currentMap);
     currentMap = manipulateMap(mountainsAmount, mountain, currentMap);

@@ -2,11 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartograph_digital_note/gameboard/cubit/cubit.dart';
 import 'package:kartograph_digital_note/gameboard/game_board.dart';
+import 'package:kartograph_digital_note/gameboard/model/game_board_model.dart';
 import 'package:package_info/package_info.dart';
 
 class StartPage extends StatelessWidget {
   Future<PackageInfo> _getPackage() async {
     return await PackageInfo.fromPlatform();
+  }
+
+  StartPage() {
+    if (gameBoard.length > 3) {
+      print('cut random level');
+      gameBoard = gameBoard.sublist(0, 3);
+    }
   }
 
   @override
@@ -51,7 +59,7 @@ class StartPage extends StatelessWidget {
                 onPressed: () => navigateToGameboard(2),
               ),
               RaisedButton(
-                child: Text('Zufallslevel'),
+                child: Text('Solo Zufallslevel'),
                 onPressed: () => navigateToGameboard(3),
               ),
             ],
