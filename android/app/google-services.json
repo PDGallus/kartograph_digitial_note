@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "977094876977",
+    "firebase_url": "https://kartograph-spielblock.firebaseio.com",
+    "project_id": "kartograph-spielblock",
+    "storage_bucket": "kartograph-spielblock.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977094876977:android:b7629ead33366b8db51a10",
+        "android_client_info": {
+          "package_name": "de.pdgallus.kartograph_digital_note"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977094876977-4b5oesblsvorg8f2gvu4kl75616rvcov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.pdgallus.kartograph_digital_note",
+            "certificate_hash": "df6f7ce87e717fdc150e7102885bf12bec0dcdd4"
+          }
+        },
+        {
+          "client_id": "977094876977-oudbhs3ih113d3pr15r0g8q3e6mksprd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnXX3xAEX6f7tZRfE5jB_ATbjiMshFLU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977094876977-oudbhs3ih113d3pr15r0g8q3e6mksprd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
