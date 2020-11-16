@@ -30,14 +30,6 @@ class PointsArea extends StatelessWidget {
       monster.resetState();
     }
 
-    resetAllCubits() {
-      context.bloc<Cat1Cubit>().resetState();
-      context.bloc<Cat2Cubit>().resetState();
-      context.bloc<MonsterCubit>().resetState();
-      context.bloc<SeasonsCubit>().resetState();
-      context.bloc<SumUpCubit>().resetState();
-    }
-
     return Expanded(
       flex: 1,
       child: Container(

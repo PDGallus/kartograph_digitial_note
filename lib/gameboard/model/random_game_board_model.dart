@@ -12,17 +12,17 @@ class RandomGameBoardModel {
 
   RandomGameBoardModel();
 
-  List<GridFieldModel> getBlankMap() {
-    return List.generate(121, (index) => empty);
+  List<GridFieldModel> _getNineByNineBlankMap() {
+    return List.generate(81, (index) => empty);
   }
 
-  List<GridFieldModel> manipulateMap(
+  List<GridFieldModel> _manipulateMap(
       int amount, GridFieldModel model, List<GridFieldModel> list) {
     for (int i = 0; i < amount; i++) {
-      int index = 0 + _random.nextInt(121 - 0);
+      int index = 0 + _random.nextInt(81 - 0);
       while (list[index].fieldColor != Colors.transparent ||
           list[index].icon != null) {
-        index = 0 + _random.nextInt(121 - 0);
+        index = 0 + _random.nextInt(81 - 0);
       }
       list.removeAt(index);
       list.insert(index, model);
@@ -30,16 +30,29 @@ class RandomGameBoardModel {
     return list;
   }
 
-  void createRandomMap() {
-    List<GridFieldModel> currentMap = getBlankMap();
-    currentMap = manipulateMap(templesAmount, temple, currentMap);
-    currentMap = manipulateMap(mountainsAmount, mountain, currentMap);
-    currentMap = manipulateMap(wastelandsAmount, wasteland, currentMap);
-    List<List<GridFieldModel>> chunks = [];
-    for (var i = 0; i < currentMap.length; i += 11) {
-      chunks.add(currentMap.sublist(
-          i, i + 11 > currentMap.length ? currentMap.length : i + 11));
+  List<List<GridFieldModel>> _generateElevenByElevenMap(
+      List<List<GridFieldModel>> nineByNineMap) {
+    List<List<GridFieldModel>> tempMap = [];
+    tempMap.add(List.generate(11, (index) => empty));
+    for (List<GridFieldModel> list in nineByNineMap) {
+      list.insert(0, empty);
+      list.add(empty);
+      tempMap.add(list);
     }
-    gameBoard.add(chunks);
+    tempMap.add(List.generate(11, (index) => empty));
+    return tempMap;
+  }
+
+  void createRandomMap() {
+    List<GridFieldModel> currentMap = _getNineByNineBlankMap();
+    currentMap = _manipulateMap(templesAmount, temple, currentMap);
+    currentMap = _manipulateMap(mountainsAmount, mountain, currentMap);
+    currentMap = _manipulateMap(wastelandsAmount, wasteland, currentMap);
+    List<List<GridFieldModel>> chunks = [];
+    for (var i = 0; i < currentMap.length; i += 9) {
+      chunks.add(currentMap.sublist(
+          i, i + 9 > currentMap.length ? currentMap.length : i + 9));
+    }
+    gameBoard.add(_generateElevenByElevenMap(chunks));
   }
 }
