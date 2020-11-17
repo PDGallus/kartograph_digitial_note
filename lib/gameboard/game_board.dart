@@ -49,46 +49,41 @@ class GameBoard extends StatelessWidget {
         BlocProvider<MonsterCubit>(create: (_) => MonsterCubit()),
         BlocProvider<ActiveColorCubit>(create: (_) => ActiveColorCubit()),
       ],
-      child: Scaffold(
-        backgroundColor: Colors.brown,
-        appBar: AppBar(
-          backgroundColor: Colors.brown[300],
-          title: BlocBuilder<SeasonsCubit, int>(
-            builder: (context, state) =>
-                Row(
-                  children: [
-                    Text(activeCategories[state]['text']),
-                    SizedBox(width: 8),
-                    Icon(activeCategories[state]['icon']),
-                  ],
-                ),
+      child: WillPopScope(
+        onWillPop: _onBackPressed,
+        child: Scaffold(
+          backgroundColor: Colors.brown,
+          appBar: AppBar(
+            backgroundColor: Colors.brown[300],
+            title: BlocBuilder<SeasonsCubit, int>(
+              builder: (context, state) => Row(
+                children: [
+                  Text(activeCategories[state]['text']),
+                  SizedBox(width: 8),
+                  Icon(activeCategories[state]['icon']),
+                ],
+              ),
+            ),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: _onBackPressed,
+            ),
           ),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: _onBackPressed,
-          ),
-        ),
-        body: Builder(
-          builder: (context) => SingleChildScrollView(
-            child: Container(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height -
-                    Scaffold
-                        .of(context)
-                        .appBarMaxHeight,
-                padding: EdgeInsets.all(16.0),
-                child: Container(
-                  color: Colors.grey[350],
-                  child: MediaQuery
-                      .of(context)
-                      .orientation ==
-                      Orientation.landscape ||
-                      kIsWeb
-                      ? GameBoardLandscape()
-                      : GameBoardPortrait(),
-                )),
+          body: Builder(
+            builder: (context) => SingleChildScrollView(
+              child: Container(
+                  height: MediaQuery.of(context).size.height -
+                      Scaffold.of(context).appBarMaxHeight,
+                  padding: EdgeInsets.all(16.0),
+                  child: Container(
+                    color: Colors.grey[350],
+                    child: MediaQuery.of(context).orientation ==
+                                Orientation.landscape ||
+                            kIsWeb
+                        ? GameBoardLandscape()
+                        : GameBoardPortrait(),
+                  )),
+            ),
           ),
         ),
       ),
