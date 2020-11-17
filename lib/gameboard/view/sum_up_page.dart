@@ -9,8 +9,7 @@ class SumUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _resetStatesAndNavigateToAppStart() {
-      context.bloc<SumUpCubit>().resetState();
-      context.bloc<SeasonsCubit>().resetState();
+      resetTopLevelCubits(context);
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => App()),

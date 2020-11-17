@@ -9,6 +9,15 @@ import 'package:kartograph_digital_note/gameboard/view/view.dart';
 class GameBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    _navigateToAppStart() {
+      resetTopLevelCubits(context);
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => App()),
+        (Route<dynamic> route) => false,
+      );
+    }
+
     Future<bool> _onBackPressed() {
       return showDialog(
             context: context,
@@ -19,9 +28,9 @@ class GameBoard extends StatelessWidget {
                 FlatButton(
                   onPressed: () => Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => App()),
-                    (Route<dynamic> route) => false,
-                  ),
+                        MaterialPageRoute(builder: (context) => App()),
+                            (Route<dynamic> route) => false,
+                      ),
                   child: Text(
                     "Ja",
                     style: TextStyle(color: Colors.red),
@@ -34,7 +43,7 @@ class GameBoard extends StatelessWidget {
                 ),
               ],
             ),
-          ) ??
+      ) ??
           false;
     }
 
@@ -78,8 +87,8 @@ class GameBoard extends StatelessWidget {
                   child: Container(
                     color: Colors.grey[350],
                     child: MediaQuery.of(context).orientation ==
-                                Orientation.landscape ||
-                            kIsWeb
+                        Orientation.landscape ||
+                        kIsWeb
                         ? GameBoardLandscape()
                         : GameBoardPortrait(),
                   )),
