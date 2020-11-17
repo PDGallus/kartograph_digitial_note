@@ -1,0 +1,1 @@
+Fehler behoben, mit dem auf Android ein Spiel unbeabsichtigt beendet werden konnte.
